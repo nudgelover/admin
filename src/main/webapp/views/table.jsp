@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
@@ -8,7 +9,8 @@
     <h1 class="h3 mb-2 text-gray-800">Tables</h1>
     <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
         For more information about DataTables, please visit the <a target="_blank"
-                                                                   href="https://datatables.net">official DataTables documentation</a>.</p>
+                                                                   href="https://datatables.net">official DataTables
+            documentation</a>.</p>
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
@@ -49,7 +51,7 @@
                             <td>${obj.office}</td>
                             <td>${obj.age}</td>
                             <td>${obj.start_date}</td>
-                            <td><fmt:formatNumber type="number" pattern="###.###$" value="${obj.salary}" /></td>
+                            <td><fmt:formatNumber type="number" pattern="###.###$" value="${obj.salary}"/></td>
                         </tr>
                     </c:forEach>
                     </tbody>
@@ -62,29 +64,6 @@
 <!-- /.container-fluid -->
 
 </div>
-<!-- End of Main Content -->
-
-
-<!-- Scroll to Top Button-->
-<a class="scroll-to-top rounded" href="#page-top">
-    <i class="fas fa-angle-up"></i>
-</a>
 
 
 
-<!-- Bootstrap core JavaScript-->
-<script src="vendor/jquery/jquery.min.js"></script>
-<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-<!-- Core plugin JavaScript-->
-<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-<!-- Custom scripts for all pages-->
-<script src="js/sb-admin-2.min.js"></script>
-
-<!-- Page level plugins -->
-<script src="vendor/datatables/jquery.dataTables.min.js"></script>
-<script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
-
-<!-- Page level custom scripts -->
-<script src="js/demo/datatables-demo.js"></script>
