@@ -73,10 +73,10 @@
                             </div>
 
                             <button type="button" id="update_btn" class="btn btn-primary btn-user btn-block">Change
-                                Cust INFO
+                                Cust Info
                             </button>
                             <button type="button" id="delete_btn" class="btn btn-primary btn-user btn-block">Delete
-                                Cust INFO
+                                Cust Info
                             </button>
 
                         </form>

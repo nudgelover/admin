@@ -7,8 +7,12 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class WebMvcConfig implements WebMvcConfigurer {
     @Value("${imgdir}")
     String imgdir;
+
+    @Value("${logdir}")
+    String logdir;
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/uimg/**").addResourceLocations(imgdir);
+        registry.addResourceHandler("/logs/**").addResourceLocations(logdir);
     }
 }

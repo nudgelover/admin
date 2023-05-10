@@ -4,6 +4,7 @@ import com.kbstar.dto.Sales;
 import com.kbstar.frame.KBService;
 import com.kbstar.mapper.SalesMapper;
 import lombok.extern.slf4j.Slf4j;
+import org.json.simple.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -44,5 +45,13 @@ public class SalesService implements KBService<String, Sales> {
     @Override
     public List<Sales> get() throws Exception {
         return mapper.selectall();
+    }
+
+    public List<Integer> wmonthly(){
+        return mapper.wmonthly();
+    }
+
+    public List<Integer> mmonthly(){
+        return mapper.mmonthly();
     }
 }

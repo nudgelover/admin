@@ -42,4 +42,18 @@
         DELETE FROM cart WHERE id=#{id}
     </delete>
 
+    <select id="count" resultType="Integer">
+        SELECT sum(cnt) FROM cart
+    </select>
+
+    <select id="countprice" resultType="Integer">
+        select sum(c.cnt * i.price)
+        from cart c, item i
+        where c.item_id = i.id
+    </select>
+
+
+
+
+
 </mapper>

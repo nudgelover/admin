@@ -27,7 +27,7 @@
             loc=#{loc}
         WHERE id = #{id}
     </update>
-    <delete id="delete" parameterType="String">
+    <delete id="delete" parameterType="int">
         DELETE
         FROM marker
         WHERE id = #{id}
@@ -37,6 +37,18 @@
         FROM marker
         WHERE loc = upper(#{loc})
 --         db에 loc가 대문자임!
+    </select>
+    <select id="search" parameterType="markerSearch" resultType="marker">
+-- https://mybatis.org/mybatis-3/ko/dynamic-sql.html 참고
+        SELECT * FROM marker
+        <where>
+            <if test="loc != null and !loc.equals('')">
+                loc = UPPER(#{loc})
+            </if>
+            <if test="title != null and !title.equals('')">
+                AND title Like '%'||#{title}||'%'
+            </if>
+        </where>
     </select>
 
 </mapper>

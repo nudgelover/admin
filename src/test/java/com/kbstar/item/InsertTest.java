@@ -15,7 +15,7 @@ class InsertTest {
 
     @Test
     void contextLoads() {
-        Item item = new Item(0,"원피스",1000,"e.jpe",null);
+        Item item = new Item(0,"원피스",1000,"e.jpe",null,null);
         try {
             service.register(item);
             service.get();

@@ -16,7 +16,7 @@ class InsertTest {
 
     @Test
     void contextLoads() {
-        Adm adm = new Adm("admin01", "pwd04", 4);
+        Adm adm = new Adm("admin04", "pwd04", 4);
         try {
             service.register(adm);
             service.get();

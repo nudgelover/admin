@@ -20,11 +20,52 @@
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Live Chart</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Item All</h6>
         </div>
         <div class="card-body">
+            <form action="/item/search" method="get" id="search_form" class="form-inline well">
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="name">Name:</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="name" class="form-control" id="name" placeholder="Enter name"
+                               value="${is.name}"
+                        >
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="price">Price:</label>
+                    <div class="col-sm-10">
+                        <input type="number" name="price" class="form-control" id="price" placeholder="Enter price"
+                               value="${is.price}"
+                        >
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="startdate">Start Date:</label>
+                    <div class="col-sm-10">
+                        <input type="date" name="startdate" class="form-control" id="startdate" placeholder="Enter Start Date"
+                               value="${is.startdate}"
+                        >
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-2" for="enddate">End Date:</label>
+                    <div class="col-sm-10">
+                        <input type="date" name="enddate" class="form-control" id="enddate" placeholder="Enter End Date"
+                               value="${is.enddate}"
+                        >
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-2">
+                        <button id="search_btn" type="submit" class="btn btn-info">Search</button>
+                    </div>
+                </div>
+            </form>
+
             <figure class="highcharts-figure">
                 <div class="table-responsive">
+
                     <table class="table table-bordered text-center align-items-center" id="dataTable" width="100%"
                            cellspacing="0">
                         <thead>
@@ -41,7 +82,7 @@
                             <tr>
                                 <td><img id="itemimg" data-toggle="modal" data-target="#img${obj.id}"
                                          src="/uimg/${obj.imgname}"></td>
-                                <td>${obj.name}</td>
+                                <td><a href="/item/detail?id=${obj.id}">${obj.name}</a></td>
                                 <td><fmt:formatNumber type="number" pattern="###,###" value="${obj.price}"/>¿ø</td>
                                 <td><fmt:formatDate pattern="yyyy/MM/dd" value="${obj.rdate}"/></td>
                             </tr>

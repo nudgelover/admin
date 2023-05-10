@@ -15,7 +15,7 @@ class UpdateTest {
 
     @Test
     void contextLoads() throws Exception {
-        Marker obj = new Marker(110, "이층집", "http://www.naver.com", 37.635327, 127.010507, "yang.jpg", "S");
+        Marker obj = new Marker(109, "이층집", "http://www.naver.com", 37.635327, 127.010507, "yang.jpg", "S");
 
         try {
             service.modify(obj);

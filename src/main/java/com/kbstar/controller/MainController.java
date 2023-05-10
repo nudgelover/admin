@@ -7,11 +7,11 @@ import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
@@ -21,13 +21,17 @@ import java.util.List;
 
 @Slf4j
 public class MainController {
+    @Value("${adminserver}")
+    String adminserver;
+
     @Autowired
     private BCryptPasswordEncoder encoder;
     @Autowired
     AdmService admservice;
     Logger logger = LoggerFactory.getLogger(this.getClass().getSimpleName());
     @RequestMapping("/")
-    public String main() {
+    public String main(Model model) {
+        model.addAttribute("adminserver",adminserver);
         return "index";
     }
 
@@ -75,6 +79,7 @@ public class MainController {
 
     @RequestMapping("/livechart")
     public String livechart(Model model) {
+        model.addAttribute("adminserver",adminserver);
         model.addAttribute("center", "livechart");
         return "index";
     }
@@ -138,6 +143,7 @@ public class MainController {
             session.setAttribute("loginadm",adm);
             //이렇게 하면 가입하면 바로 로그인 됨!
         } catch (Exception e) {
+            e.printStackTrace();
             throw new Exception("가입오류");
         }
 
@@ -174,6 +180,13 @@ public class MainController {
         //수정 후 다시 수정페이지로 이동 해 잘 수정됬는 지 확인, "redirect"를 통해서
         return "redirect:/adminfo?id="+adm.getId();
         //여기서는 url연결할 때 요렇게! ${} 이거 아니다!
+    }
+
+    @RequestMapping("/websocket")
+    public String websocket(Model model) {
+        model.addAttribute("adminserver",adminserver);
+        model.addAttribute("center", "websocket");
+        return "index";
     }
 }
 

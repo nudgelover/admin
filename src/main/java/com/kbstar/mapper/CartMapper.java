@@ -14,4 +14,10 @@ public interface CartMapper extends KBMapper<Integer, Cart> {
 
     //전체조회가 아니라, 회원 아이디로 조회하는 기능 추가. 어떤 회원이 어떤 상품을 담았는지!!
     //기존에 없던 기능 추가. 이게 스페셜라이즈...?머..?
+   public Integer count();
+    //void는 돌려받을 게 없는거 insert 처럼
+    //이 경우에는 count 값을 Integer로 돌려받아야함!
+
+    public Integer countprice();
+
 }

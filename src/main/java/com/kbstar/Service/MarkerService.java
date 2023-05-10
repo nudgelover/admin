@@ -2,6 +2,7 @@ package com.kbstar.Service;
 
 
 import com.kbstar.dto.Marker;
+import com.kbstar.dto.MarkerSearch;
 import com.kbstar.frame.KBService;
 import com.kbstar.mapper.MarkerMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,4 +53,7 @@ public class MarkerService implements KBService<Integer, Marker> {
         return mapper.getmyloc(loc);
     }
 
+    public List<Marker> search(MarkerSearch ms) throws Exception{
+        return mapper.search(ms);
+    }
 }

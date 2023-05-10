@@ -10,4 +10,15 @@
     <insert id="insert" parameterType="sales">
         INSERT INTO sales VALUES (TO_DATE(#{rdate},'YYYY-MM-DD'), #{price}, #{gender})
     </insert>
+
+
+    <select id="mmonthly" resultType="Integer">
+        SELECT price FROM sales
+        WHERE gender ='M'
+    </select>
+
+    <select id="wmonthly" resultType="Integer">
+        SELECT price FROM sales
+        WHERE gender ='F'
+    </select>
 </mapper>

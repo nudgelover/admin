@@ -2,9 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ko">
-
 <head>
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -13,18 +11,23 @@
 
     <title>SB Admin 2 - Dashboard</title>
 
+
     <!-- Custom fonts for this template -->
     <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link
-            href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-            rel="stylesheet">
-
+<%--   <link href="/admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">--%>
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+          rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="/css/sb-admin-2.min.css" rel="stylesheet">
-
     <!-- Custom styles for this page -->
     <link href="/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
+    <%--카카오 지도 스크립트--%>
+    <script type="text/javascript"
+            src="//dapi.kakao.com/v2/maps/sdk.js?appkey=bdeaed76dc8de3e2c25b24d04c468b43"></script>
+    <%--    websock--%>
+    <script src="/webjars/sockjs-client/sockjs.min.js"></script>
+    <script src="/webjars/stomp-websocket/stomp.min.js"></script>
 </head>
 
 <body id="page-top">
@@ -93,6 +96,23 @@
                 </div>
             </div>
         </li>
+        <!-- Nav Item - Utilities Collapse Menu -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities2"
+               aria-expanded="true" aria-controls="collapseUtilities">
+                <i class="fas fa-fw fa-wrench"></i>
+                <span>Marker</span>
+            </a>
+            <div id="collapseUtilities2" class="collapse" aria-labelledby="headingUtilities"
+                 data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">Marker Managements:</h6>
+                    <a class="collapse-item" href="/marker/add">ADD</a>
+                    <a class="collapse-item" href="/marker/all">ALL</a>
+                </div>
+            </div>
+        </li>
+
 
         <!-- Divider -->
         <hr class="sidebar-divider">
@@ -142,6 +162,13 @@
                 <i class="fas fa-fw fa-chart-area"></i>
                 <span>Live Chart</span></a>
         </li>
+        <c:if test="${loginadm!=null}">
+            <li class="nav-item">
+                <a class="nav-link" href="/websocket">
+                    <i class="fas fa-fw fa-rocket"></i>
+                    <span>Websocket</span></a>
+            </li>
+        </c:if>
 
         <!-- Divider -->
         <hr class="sidebar-divider d-none d-md-block">
@@ -343,13 +370,15 @@
                     <c:choose>
                         <c:when test="${loginadm == null}">
                             <li class="nav-item dropdown no-arrow mx-1">
-                                <a style="color: royalblue" class="nav-link dropdown-toggle" href="/login" role="button">
+                                <a style="color: royalblue" class="nav-link dropdown-toggle" href="/login"
+                                   role="button">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Login
                                 </a>
                             </li>
                             <li class="nav-item dropdown no-arrow mx-1">
-                                <a style="color: royalblue" class="nav-link dropdown-toggle" href="/register" role="button">
+                                <a style="color: royalblue" class="nav-link dropdown-toggle" href="/register"
+                                   role="button">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Register
                                 </a>
@@ -488,6 +517,13 @@
 <%--로그 차트 스크립트 live chart--%>
 <script src="https://code.highcharts.com/highcharts.js"></script>
 <script src="https://code.highcharts.com/modules/data.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+<%--center차트2--%>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/series-label.js"></script>
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
 <script src="https://code.highcharts.com/modules/export-data.js"></script>
 <script src="https://code.highcharts.com/modules/accessibility.js"></script>

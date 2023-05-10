@@ -26,8 +26,10 @@
 </script>
 <style>
     #register_btn {
-        max-width: 200px;
-        margin-left: auto;
+        max-width: 30%;
+        margin-left: 35%;
+        margin-right: 35%;
+
     }
 </style>
 <div class="container-fluid">

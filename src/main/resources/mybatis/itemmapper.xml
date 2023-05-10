@@ -9,7 +9,7 @@
         SELECT * FROM item WHERE ID=#{id}
     </select>
     <select id="selectall" resultType="item">
-        SELECT * FROM item
+        SELECT * FROM item order by id desc
     </select>
     <insert id="insert" parameterType="item">
         INSERT INTO item VALUES (item_seq.NEXTVAL,#{name},#{price},#{imgname},SYSDATE)
@@ -20,5 +20,24 @@
     <delete id="delete" parameterType="Integer">
         DELETE FROM item WHERE ID=#{id}
     </delete>
+
+    <select id="search" parameterType="itemSearch" resultType="item">
+        -- https://mybatis.org/mybatis-3/ko/dynamic-sql.html 참고
+        SELECT * FROM item
+        <where>
+            <if test="startdate != null and !startdate.equals('') ">
+                rdate &gt;= TO_DATE(#{startdate},'YYYY-MM-DD')
+            </if>
+            <if test="enddate != null and !enddate.equals('')">
+                AND   rdate &lt;= TO_DATE(#{enddate},'YYYY-MM-DD')+0.9999
+            </if>
+            <if test="name != null and !name.equals('') ">
+                AND name LIKE '%'||#{name}||'%'
+            </if>
+            <if test="price != null and !price.equals('') ">
+                AND price &gt;= #{price}
+            </if>
+        </where>
+    </select>
 
 </mapper>
